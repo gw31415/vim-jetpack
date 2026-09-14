@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, windows-2022, macos-11]
+        os: [ubuntu-22.04, windows-2022, macos-15-intel]
         vi: [neovim, vim]
         cp: [system, copy, hardlink, symlink]
         dl: [git, curl, wget]
@@ -24,11 +24,11 @@ jobs:
         run: echo 'Unsupported environment'
 
       - name: Clone vim-jetpack
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         if: ${{ steps.check.conclusion == 'skipped' }}
 
       - name: Install vim-themis
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
         if: ${{ steps.check.conclusion == 'skipped' }}
         with:
           repository: thinca/vim-themis
